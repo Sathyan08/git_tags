@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
-  validates_uniqueness_of :login
-  validates_uniqueness_of :email
+  validates :login, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
 
   def self.find_or_create_from_auth_hash(auth_hash)
     user_info = auth_hash.extra.raw_info
